@@ -14,8 +14,9 @@ jobs:
         java-version: '11'
     - name: Build with Maven
       run: mvn clean install
-    - name: Run tests
-      run: mvn test
+    - name: Run tests and save output
+      id: test
+      run: mvn test | tee test_output.txt
 
     - name: Notify Telegram on success
       if: success()
@@ -24,9 +25,9 @@ jobs:
         -d "chat_id=${{ secrets.TELEGRAM_CHAT_ID }}" \
         -d "text=Build and tests for Java project completed successfully! ✅"
 
-    - name: Notify Telegram on failure
+    - name: Notify Telegram on failure with test results
       if: failure()
       run: |
         curl -X POST "https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendMessage" \
         -d "chat_id=${{ secrets.TELEGRAM_CHAT_ID }}" \
-        -d "text=Build or tests for Java project failed. ❌"
+        -d "text=Build or tests for Java project failed. ❌%0A%0AFailed tests:%0A$(grep -E 'Tests run: [0-9]+, Failures: [1-9]+' test_output.txt | sed -E 's/(.*)\[(.*)\]/- \2/')"
