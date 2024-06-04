@@ -1,6 +1,6 @@
 # Операции с числами на Java
 
-[![Build Status](https://github.com/mo0dk/TZ2/actions/workflows/ci.yml/badge.svg)](https://github.com/ВАШ_ЛОГИН/ВАШ_РЕПОЗИТОРИЙ/actions/workflows/ci.yml)
+[![Build Status](https://github.com/mo0dk/TZ2/actions/workflows/ci.yml/badge.svg)](https://github.com/mo0dk/TZ2/actions/workflows/ci.yml)
 
 Этот проект реализует базовые операции с числами: нахождение минимального, максимального значения, суммы и произведения чисел, прочитанных из файла.
 
