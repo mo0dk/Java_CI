@@ -16,7 +16,7 @@ jobs:
       run: mvn clean install
     - name: Run tests and save output
       id: test
-      run: mvn test | tee test_output.txt
+      run: mvn test > test_output.txt 2>&1
 
     - name: Notify Telegram on success
       if: success()
