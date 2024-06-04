@@ -7,7 +7,7 @@ public class MainTest {
     @Test
     public void testMin() {
         List<Integer> numbers = Arrays.asList(1, 4, 2, 3);
-        assertEquals(2, Main._min(numbers));
+        assertEquals(1, Main._min(numbers));
     }
 
     @Test
